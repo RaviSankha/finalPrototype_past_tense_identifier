@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+        $(function() {
+            $('a#p_input').bind('click', function() {
+                $.getJSON('/background_process', {
+                    sentenceInput: $('input[name="sentenceInput"]').val(),
+                }, function(data) {
+                    $("#result1").text(data.result1);
+                    $("#result2").text(data.result2);
+                    $("#result3").text(data.result3);
+                    $("#result4").text(data.result4);
+
+                });
+                return false;
+            });
+        });
+    </script>
+
+    <style>
+        h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        #txt1 {
+            width: 94%;
+            padding: 13px 30px;
+            margin: 8px 60px;
+            box-sizing: border-box;
+            border: 2px solid red;
+            border-radius: 10px;
+            size: 15;
+            font-size: 16px;
+            font-family: georgia, garamond, serif;
+            font-style: italic;
+        }
+        
+        #btn1 {
+            font-size: 16px;
+            background-color: #f44336;
+            border: none;
+            color: white;
+            padding: 14px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 60px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        #div1 {
+            margin: 0px 60px;
+        }
+        
+        #hr1 {
+            margin: 0px 60px;
+            width: 94%;
+            border-top: 1px dotted blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class='container'>
+        <h1 style="color:blue" ;>Past simple tense identifier</h1>
+        <hr id='hr1'>
+        <form>
+            <table style="width:100%">
+                <tr>
+                    <input type=text name=sentenceInput id='txt1' placeholder='Enter the sentence to check whether if it is in past tense...'>
+                </tr>
+                <tr>
+                    <a href=# id=p_input><button id='btn1'>Check tense</button></a>
+                </tr>
+            </table>
+        </form>
+        <div id='div1' style="background-color:#fffff0;">
+            <div>
+                <p style="font-family:georgia,garamond,serif;font-size:18px;font-style:italic;"> <span id=result2></span><mark><strong><span id=result4 style="color: #ff0000"></span></strong></mark><span id=result3></span> </p>
+            </div>
+            <div>
+                <p id=result1 style="font-family:georgia,garamond,serif;font-size:18px;font-style:italic;"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
